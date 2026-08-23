@@ -314,6 +314,18 @@ const LESSON_TOPICS = {
   10: '그라디언트 & 이미지 포토샵 자료 보기'
 };
 
+  const LESSON_FOLDERS = {
+  '1-2': 'FD1',
+  3: 'FD3',
+  4: 'FD4',
+  5: 'FD5',
+  6: 'FD6',
+  7: 'FD7',
+  8: 'FD8',
+  9: 'FD9',
+  10: 'FD10'
+};
+
 // 로컬 file:// 환경에서 History API나 URL 라우팅을 사용하지 않습니다.
 // 강의 선택은 이 HTML 문서 내부 상태만 바꾸고 즉시 화면을 다시 그립니다.
 let lesson = null;
@@ -321,14 +333,17 @@ let current = 1;
 let total = null;
 
 function pageRelativePath(n, page) {
-  return `./FD${n}/${String(page).padStart(2, '0')}.png`;
+  const folder = LESSON_FOLDERS[n];
+  return `./${folder}/${String(page).padStart(2, '0')}.png`;
 }
 
 function goLesson(n) {
   if (!LESSONS.includes(n)) return;
+
   lesson = n;
   current = 1;
   total = PAGE_TOTALS[n];
+
   renderViewer();
 }
 
