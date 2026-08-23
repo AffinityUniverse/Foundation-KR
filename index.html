@@ -338,7 +338,8 @@ function pageRelativePath(n, page) {
 }
 
 function goLesson(n) {
-  if (!LESSONS.includes(n)) return;
+  n = String(n);
+  if (!LESSONS.map(String).includes(n)) return;
 
   lesson = n;
   current = 1;
